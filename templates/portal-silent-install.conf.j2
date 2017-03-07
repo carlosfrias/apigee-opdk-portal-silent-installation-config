@@ -1,0 +1,52 @@
+HOSTIP={{ local_address }}
+
+# Specifiy the name of the portal database in Postgres.
+PG_NAME=devportal
+
+# Postgres admin credentials
+PG_USER={{ pg_user }}
+PG_PWD={{ pg_pass }}
+
+PG_HOST={{ pgmaster_ip }}
+
+DRUPAL_PG_USER={{ drupal_pg_user }}
+DRUPAL_PG_PASS={{ drupal_pg_password }}
+
+DEFAULT_DB=postgres
+
+DEVPORTAL_ADMIN_FIRSNAME={{ first_name }}
+DEVPORTAL_ADMIN_LASTNAME={{ last_name }}
+DEVPORTAL_ADMIN_USERNAME={{ opdk_user_name }}
+DEVPORTAL_ADMIN_PWD={{ opdk_user_pass }}
+DEVPORTAL_ADMIN_EMAIL={{ opdk_user_email }}
+
+EDGE_ORG={{ opdk_org_name }}
+
+MGMT_URL=http://{{ local_mgmt_ip }}:8080/v1
+
+DEVADMIN_USER={{ opdk_user_name }}
+DEVADMIN_PWD={{ opdk_user_pass }}
+
+PHP_FPM_PORT=8888
+
+LICENSE_FILE={{ opdk_license_target_file_path }}
+
+SKIP_SMTP={{ opdk_skip_smtp }}
+{% if opdk_skip_smtp | bool %}
+SMTPHOST={{ opdk_smtp_host }}
+SMTPPORT={{ opdk_smtp_port }}
+SMTPUSER={{ opdk_smtp_user }}
+SMTPPASSWORD={{ opdk_smtp_password }}
+SMTPSSL={{ opdk_smtp_ssl }}
+{% endif %}
+
+{# TODO: Build a module that discover the region of the inventory_hostname and update the REGION #}
+{% if groups['dc-1'] is defined and inventory_hostname in groups['dc-1'] %}
+REGION=dc-1
+{% elif groups['dc-2'] is defined and inventory_hostname in groups['dc-2'] %}
+REGION=dc-2
+{% elif groups['dc-3'] is defined and inventory_hostname in groups['dc-3'] %}
+REGION=dc-3
+{% endif %}
+
+MP_POD={{ opdk_mp_pod }}
