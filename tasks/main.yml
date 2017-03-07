@@ -16,7 +16,7 @@
 - name: Copy provided silent-install file
   copy:
     src: "{{ provided_response_file }}"
-    dest: "{{ opdk_installation_config_file }}"
+    dest: "{{ opdk_portal_installation_config_file }}"
     owner: '{{ opdk_user_name }}'
     group: '{{ opdk_group_name }}'
     mode: 0655
