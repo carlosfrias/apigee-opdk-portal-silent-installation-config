@@ -22,12 +22,12 @@ DEVPORTAL_ADMIN_EMAIL={{ opdk_user_email }}
 
 EDGE_ORG={{ org_name }}
 
-MGMT_URL=http://{{ local_mgmt_ip }}:8080/v1
+MGMT_URL=http://{{ local_mgmt_ip }}:{{ ms_ext_mgmt_port }}/v1
 
 DEVADMIN_USER={{ opdk_user_name }}
 DEVADMIN_PWD={{ opdk_user_pass }}
 
-PHP_FPM_PORT=8888
+PHP_FPM_PORT={{ php_fpm_port }}
 
 LICENSE_FILE={{ opdk_license_target_file_path }}
 
