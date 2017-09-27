@@ -31,8 +31,8 @@ PHP_FPM_PORT={{ php_fpm_port }}
 
 LICENSE_FILE={{ opdk_license_target_file_path }}
 
-SKIP_SMTP={{ opdk_skip_smtp }}
-{% if opdk_skip_smtp | bool %}
+SKIP_SMTP={{ opdk_smtp_skip }}
+{% if opdk_smtp_skip | bool %}
 SMTPHOST={{ opdk_smtp_host }}
 SMTPPORT={{ opdk_smtp_port }}
 SMTPUSER={{ opdk_smtp_user }}
